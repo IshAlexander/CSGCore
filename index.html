@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu li:hover {
+            background-color: #555;
+            transform: translateY(-5px);
+        }
+
+        .menu-item {
+            display: none;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            display: none;
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: center;
+                background-color: #333;
+                display: none;
+            }
+
+            .menu-item {
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            #menu-toggle:checked + .menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">☰ Menu</label>
+        <ul class="menu">
+            <li class="menu-item">Home</li>
+            <li class="menu-item">About</li>
+            <li class="menu-item">Services</li>
+            <li class="menu-item">Contact</li>
+        </ul>
+    </nav>
+
+    <main style="margin-top: 60px; padding: 20px;">
+        <h1>Welcome to the Animated Menu Example</h1>
+        <p>Resize the window or view on mobile to see the animated hamburger menu in action.</p>
+    </main>
+
+    <script>
+        document.querySelectorAll('.menu li').forEach(item => {
+            item.addEventListener('click', () => {
+                alert(`You clicked on ${item.textContent}`);
+            });
+        });
+    </script>
+
+</body>
+</html>
